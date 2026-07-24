@@ -19,3 +19,16 @@ void bubble_sort(int arr[], int n) {
         }
     }
 }
+
+void insertion_sort(int arr[], int n){
+
+    for (int i = 0; i < n; i++){
+        int c = arr[i];
+        int j = i;
+        while(j>0 && c < arr[i - 1]){
+            arr[j] = arr[i - 1];
+            j = j-1;
+        }
+        arr[j] = c;
+    }
+}
