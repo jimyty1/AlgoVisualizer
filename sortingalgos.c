@@ -25,10 +25,24 @@ void insertion_sort(int arr[], int n){
     for (int i = 0; i < n; i++){
         int c = arr[i];
         int j = i;
-        while(j>0 && c < arr[i - 1]){
-            arr[j] = arr[i - 1];
-            j = j-1;
+        while(j>0 && c < arr[j - 1]){
+            arr[j] = arr[j - 1];
+            j --;
         }
         arr[j] = c;
+    }
+}
+
+void selection_sort(int arr[], int n){
+    for(int i = 0; i< n - 1; i++){
+        int minI = i;
+        for(int j = i; j< n; j++){
+            if (arr[j] < arr[minI]){
+                minI = j;
+            }
+        }
+        int c = arr[i];
+        arr[i] = arr[minI];
+        arr[minI] = c;
     }
 }

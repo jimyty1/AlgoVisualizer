@@ -2,6 +2,24 @@
 #include <assert.h>
 #include "sortingalgos.h"
 
+void print_test_result(
+    int arr[],
+    int expected[],
+    int n,
+    char debugStr
+) {
+    for (int i = 0; i < n; i++) {
+        if (debugStr == 'y' || debugStr == 'Y') {
+            printf(
+                "arr[%d] = %d, expected[%d] = %d\n",
+                i, arr[i], i, expected[i]
+            );
+        }
+
+        assert(arr[i] == expected[i]);
+    }
+}
+
 void bubble_sort_test(char debugStr) {
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int expected[] = {11, 12, 22, 25, 34, 64, 90};
@@ -10,22 +28,9 @@ void bubble_sort_test(char debugStr) {
 
     bubble_sort(arr, n);
 
-    if (debugStr == 'y' || debugStr == 'Y') {
-        for (int i = 0; i < n; i++) {
-            printf(
-                "arr[%d] = %d, expected[%d] = %d\n",
-                i, arr[i], i, expected[i]
-            );
+    print_test_result(arr, expected, n, debugStr);
 
-            assert(arr[i] == expected[i]);
-        }
-    } else {
-        for (int i = 0; i < n; i++) {
-            assert(arr[i] == expected[i]);
-        }
-    }
-
-    printf("\n Bubble sort test passed!\n");
+    printf("Bubble sort test passed!\n");
 }
 
 void insertion_sort_test(char debugStr) {
@@ -36,40 +41,37 @@ void insertion_sort_test(char debugStr) {
 
     insertion_sort(arr, n);
 
-    if (debugStr == 'y' || debugStr == 'Y') {
-        for (int i = 0; i < n; i++) {
-            printf(
-                "arr[%d] = %d, expected[%d] = %d\n",
-                i, arr[i], i, expected[i]
-            );
+    print_test_result(arr, expected, n, debugStr);
 
-            assert(arr[i] == expected[i]);
-        }
-    } else {
-        for (int i = 0; i < n; i++) {
-            assert(arr[i] == expected[i]);
-        }
-    }
+    printf("Insertion sort test passed!\n");
+}
 
-    printf("\n Insertion sort test passed!\n");
+void selection_sort_test(char debugStr) {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int expected[] = {11, 12, 22, 25, 34, 64, 90};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    selection_sort(arr, n);
+
+    print_test_result(arr, expected, n, debugStr);
+
+    printf("Selection sort test passed!\n");
 }
 
 int main() {
-    char bbsDebug , issDebug;
+    char algosDebug;
 
-    printf("bbsDebug? (y/n): ");
-    scanf(" %c", &bbsDebug);
-    printf("\n chose %c ", bbsDebug);
+    printf("algosDebug? (y/n): ");
+    scanf(" %c", &algosDebug);
 
-    bubble_sort_test(bbsDebug);
+    printf("\nChosen: %c\n\n", algosDebug);
 
-    printf("issDebug? (y/n): ");
-    scanf(" %c", &issDebug);
-    printf("\n chose %c ", issDebug);
+    bubble_sort_test(algosDebug);
+    insertion_sort_test(algosDebug);
+    selection_sort_test(algosDebug);
 
-    bubble_sort_test(issDebug);
-
-    printf("All tests passed!\n");
+    printf("\nAll tests passed!\n");
 
     return 0;
 }
