@@ -1,5 +1,5 @@
-#ifndef sortingalgos_h
-#define sortingalgos_h
+#ifndef SORTINGALGOS_H
+#define SORTINGALGOS_H
 
 void bubble_sort(int arr[], int size);
 
