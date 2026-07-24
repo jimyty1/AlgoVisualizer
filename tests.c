@@ -2,22 +2,42 @@
 #include <assert.h>
 #include "sortingalgos.h"
 
-void bubble_sort_test(){
-    // Test cases for bubble sort
+void bubble_sort_test(char debugStr) {
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int expected[] = {11, 12, 22, 25, 34, 64, 90};
 
-    bubble_sort(arr, sizeof(arr) / sizeof(arr[0]));
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++) {
-        printf("arr[%d] = %d, expected[%d] = %d\n", i, arr[i], i, expected[i]);
-        assert(arr[i] == expected[i]);
+    bubble_sort(arr, n);
+
+    if (debugStr == 'y' || debugStr == 'Y') {
+        for (int i = 0; i < n; i++) {
+            printf(
+                "arr[%d] = %d, expected[%d] = %d\n",
+                i, arr[i], i, expected[i]
+            );
+
+            assert(arr[i] == expected[i]);
+        }
+    } else {
+        for (int i = 0; i < n; i++) {
+            assert(arr[i] == expected[i]);
+        }
     }
-    printf("Bubble sort test passed!\n");
+
+    printf("\n Bubble sort test passed!\n");
 }
 
 int main() {
-    bubble_sort_test();
+    char bbsDebug;
+
+    printf("bbsDebug? (y/n): ");
+    scanf(" %c", &bbsDebug);
+    printf("\n chose %c ", bbsDebug);
+
+    bubble_sort_test(bbsDebug);
+
     printf("All tests passed!\n");
+
     return 0;
 }
