@@ -3,4 +3,4 @@ tests
 main
 
 #macOS Debug Symbols
-.dSYM
+*.dSYM
