@@ -46,3 +46,40 @@ void selection_sort(int arr[], int n){
         arr[minI] = c;
     }
 }
+void merge(int arr[], int start, int mid, int end) {
+    int q = start;
+    int p = mid + 1;
+
+    int A[end - start + 1];
+    int k = 0;
+
+    for (int i = start; i <= end; i++) {
+        if (p > end) {
+            A[k++] = arr[q++];
+        }
+        else if (q > mid) {
+            A[k++] = arr[p++];
+        }
+        else if (arr[p] < arr[q]) {
+            A[k++] = arr[p++];
+        }
+        else {
+            A[k++] = arr[q++];
+        }
+    }
+
+    for (int i = 0; i < k; i++) {
+        arr[start + i] = A[i];
+    }
+}
+
+void merge_sort(int arr[], int start, int end){
+    if(start<end){
+        int mid = (start+end)/2;
+        merge_sort(arr, start, mid);
+        merge_sort(arr, mid+1, end);
+
+        merge(arr, start, mid, end);
+    }
+    
+}

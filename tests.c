@@ -58,6 +58,18 @@ void selection_sort_test(char debugStr) {
 
     printf("Selection sort test passed!\n");
 }
+void merge_sort_test(char debugStr) {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int expected[] = {11, 12, 22, 25, 34, 64, 90};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    merge_sort(arr, 0, n-1);
+
+    print_test_result(arr, expected, n, debugStr);
+
+    printf("Selection sort test passed!\n");
+}
 
 int main() {
     char algosDebug;
@@ -70,6 +82,7 @@ int main() {
     bubble_sort_test(algosDebug);
     insertion_sort_test(algosDebug);
     selection_sort_test(algosDebug);
+    merge_sort_test(algosDebug);
 
     printf("\nAll tests passed!\n");
 
