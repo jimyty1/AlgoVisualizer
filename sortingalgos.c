@@ -108,3 +108,33 @@ void quick_sort(int arr[], int start, int end){
     quick_sort(arr, start, boundary - 1);
     quick_sort(arr, boundary+1, end);
 }
+
+void heapify(int arr[], int n, int i){
+    int largest = i;
+    int l= (2*i) +1, r =(2*i) +2;
+
+    if (l < n && arr[l] > arr[largest]){
+        largest = l;
+    }
+    if (r < n && arr[r] > arr[largest]){
+        largest = r;
+    }
+    if (largest != i){
+        int t = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = t;
+        heapify(arr, n, largest);
+    } 
+}
+
+void heap_sort(int arr[], int n){
+    for(int i = (n/2)-1; i >= 0; i--){
+        heapify(arr, n, i);
+    }
+    for(int j = n-1; j > 0; j--){
+        int t = arr[j];
+        arr[j] = arr[0];
+        arr[0] = t;
+        heapify(arr, j, 0);
+    }
+}

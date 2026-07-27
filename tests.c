@@ -82,6 +82,18 @@ void quick_sort_test(char debugStr){
 
     printf("Quick sort test passed!\n");
 }
+void heap_sort_test(char debugStr){
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int expected[] = {11, 12, 22, 25, 34, 64, 90};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    heap_sort(arr, n);
+
+    print_test_result(arr, expected, n, debugStr);
+
+    printf("Quick sort test passed!\n");
+}
 
 int main() {
     char algosDebug;
@@ -96,6 +108,7 @@ int main() {
     selection_sort_test(algosDebug);
     merge_sort_test(algosDebug);
     quick_sort_test(algosDebug);
+    heap_sort_test(algosDebug);
 
     printf("\nAll tests passed!\n");
 
