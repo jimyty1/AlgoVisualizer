@@ -4,17 +4,30 @@
 // taking arr and size as c turns the array into a pointer and the size of the array is lost. 
 // So we need to pass the size of the array as well.
 
+void swap(int arr[], int n, int i, int j)
+{
+    log_swap(arr, n, i, j);
+
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+int compare(int arr[], int n, int i, int j)
+{
+    log_compare(arr, n, i, j);
+
+    return arr[i] > arr[j];
+}
+
 void bubble_sort(int arr[], int n) {
     // Implementation of bubble sort algorithm
-    int swap = 1;
-    while (swap != 0){
-        swap = 0;
+    int s = 1;
+    while (s != 0){
+        s = 0;
         for(int i = 0; i < n-1; i++){
-            if (arr[i] > arr[(i+1)]){
-                int c = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = c;
-                swap = 1;
+            if (compare(arr, n, i, i+1)){
+                swap(arr, n, i, i+1);
+                s = 1;
             }
         }
     }
