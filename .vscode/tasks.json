@@ -7,6 +7,7 @@
             "args": [
                 "main.c",
                 "sortingalgos.c",
+                "visualizer.c",
                 "-o",
                 "main"
             ],
@@ -25,6 +26,7 @@
             "args": [
                 "tests.c",
                 "sortingalgos.c",
+                "visualizer.c",
                 "-o",
                 "tests"
             ],
@@ -35,7 +37,7 @@
         {
             "label": "Run Main",
             "type": "shell",
-            "command": "gcc main.c sortingalgos.c -o main && ./main",
+            "command": "gcc main.c sortingalgos.c visualizer.c -o main && ./main",
             "problemMatcher": [
                 "$gcc"
             ]
@@ -43,7 +45,7 @@
         {
             "label": "Run Tests",
             "type": "shell",
-            "command": "gcc tests.c sortingalgos.c -o tests && ./tests",
+            "command": "gcc tests.c sortingalgos.c visualizer.c -o tests && ./tests",
             "problemMatcher": [
                 "$gcc"
             ]

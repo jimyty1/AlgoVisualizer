@@ -1,21 +1,29 @@
 #include <stdio.h>
 #include "sortingalgos.h"
+#include "visualizer.h"
 
-
-
-void swap(int arr[], int n, int i, int j)
-{
-    log_swap(arr, n, i, j);
-
+void swap(int arr[], int n, int i, int j){
+    
     int temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
+    log_swap(arr, n, i, j);
 }
-int compare(int arr[], int n, int i, int j)
-{
+int compare(int arr[], int n, int i, int j){
     log_compare(arr, n, i, j);
 
     return arr[i] > arr[j];
+}
+void overwrite(int arr[], int n, int index, int value)
+{
+    arr[index] = value;
+    log_overwrite(arr, n, index, value);
+}
+int compare_value(int arr[], int n, int index, int value)
+{
+    log_compare(arr, n, index, value);
+
+    return value < arr[index];
 }
 
 void bubble_sort(int arr[], int n) {
@@ -33,31 +41,29 @@ void bubble_sort(int arr[], int n) {
 }
 
 void insertion_sort(int arr[], int n){
-
-    for (int i = 0; i < n; i++){
+    for (int i = 1; i < n; i++){
         int c = arr[i];
         int j = i;
-        while(j>0 && c < arr[j - 1]){
-            arr[j] = arr[j - 1];
+        while(j>0 && compare_value(arr,n,j-1,c)){
+            overwrite(arr, n, j, arr[j-1]);
             j --;
         }
-        arr[j] = c;
+        overwrite(arr, n, j, c);
     }
 }
 
 void selection_sort(int arr[], int n){
     for(int i = 0; i< n - 1; i++){
         int minI = i;
-        for(int j = i; j< n; j++){
-            if (arr[j] < arr[minI]){
+        for(int j = i+1; j< n; j++){
+            if (compare(arr, n, minI, j)){
                 minI = j;
             }
         }
-        int c = arr[i];
-        arr[i] = arr[minI];
-        arr[minI] = c;
+        swap(arr, n, i, minI);
     }
 }
+
 void merge(int arr[], int start, int mid, int end) {
     int q = start;
     int p = mid + 1;
