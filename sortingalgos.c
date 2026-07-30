@@ -89,14 +89,10 @@ void quick_sort(int arr[], int start, int end){
     }
     int boundary = start;
     int pivot = end;
-    printf("pivot = %d \n", arr[pivot]);
     for (int j = start; j < end; j++)
     {
-        printf("pointer = %d \n", arr[j]);
         if(arr[j] < arr[pivot]){            
             int c = arr[j];
-            printf("comparing = %d \n",arr[j]);
-            printf("and = %d \n",arr[pivot]);
             arr[j]= arr[boundary];
             arr[boundary] = c;
             boundary++;
