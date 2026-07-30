@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include "sortingalgos.h"
 
-// taking arr and size as c turns the array into a pointer and the size of the array is lost. 
-// So we need to pass the size of the array as well.
+
 
 void swap(int arr[], int n, int i, int j)
 {
