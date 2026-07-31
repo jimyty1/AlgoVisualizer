@@ -64,7 +64,7 @@ void selection_sort(int arr[], int n){
     }
 }
 
-void merge(int arr[], int start, int mid, int end) {
+void merge(int arr[], int start, int mid, int end, int n) {
     int q = start;
     int p = mid + 1;
 
@@ -78,7 +78,7 @@ void merge(int arr[], int start, int mid, int end) {
         else if (q > mid) {
             A[k++] = arr[p++];
         }
-        else if (arr[p] < arr[q]) {
+        else if (compare(arr, n, q, p)) {
             A[k++] = arr[p++];
         }
         else {
@@ -87,17 +87,17 @@ void merge(int arr[], int start, int mid, int end) {
     }
 
     for (int i = 0; i < k; i++) {
-        arr[start + i] = A[i];
+        overwrite(arr, n, start+i, A[i]);
     }
 }
 
-void merge_sort(int arr[], int start, int end){
+void merge_sort(int arr[], int start, int end, int n){
     if(start<end){
         int mid = (start+end)/2;
-        merge_sort(arr, start, mid);
-        merge_sort(arr, mid+1, end);
+        merge_sort(arr, start, mid, n);
+        merge_sort(arr, mid+1, end, n);
 
-        merge(arr, start, mid, end);
+        merge(arr, start, mid, end, n);
     }
     
 }

@@ -174,8 +174,8 @@ void merge_sort_test() {
         int arr[] = {64,34,25,12,22,11,90};
         int before[] = {64,34,25,12,22,11,90};
         int expected[] = {11,12,22,25,34,64,90};
-
-        merge_sort(arr,0,6);
+        int n = sizeof(arr)/sizeof(arr[0]);
+        merge_sort(arr,0,6, n);
 
         verbose_print("Random Array", before, arr, 7);
 
@@ -186,8 +186,9 @@ void merge_sort_test() {
         int arr[] = {5,4,3,2,1};
         int before[] = {5,4,3,2,1};
         int expected[] = {1,2,3,4,5};
+        int n = sizeof(arr)/sizeof(arr[0]);
 
-        merge_sort(arr,0,4);
+        merge_sort(arr,0,4, n);
 
         verbose_print("Reverse Sorted", before, arr, 5);
 
@@ -198,8 +199,9 @@ void merge_sort_test() {
         int arr[] = {-5,2,-1,4,-8};
         int before[] = {-5,2,-1,4,-8};
         int expected[] = {-8,-5,-1,2,4};
+        int n = sizeof(arr)/sizeof(arr[0]);
 
-        merge_sort(arr,0,4);
+        merge_sort(arr,0,4, n);
 
         verbose_print("Negative Numbers", before, arr, 5);
 
