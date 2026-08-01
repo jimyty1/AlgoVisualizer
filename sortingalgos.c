@@ -101,26 +101,24 @@ void merge_sort(int arr[], int start, int end, int n){
     }
     
 }
-void quick_sort(int arr[], int start, int end){
+void quick_sort(int arr[], int start, int end, int n){
     if(start >= end){
         return;
     }
     int boundary = start;
     int pivot = end;
+    log_pivotB(arr, n, pivot, boundary, start);
     for (int j = start; j < end; j++)
     {
-        if(arr[j] < arr[pivot]){            
-            int c = arr[j];
-            arr[j]= arr[boundary];
-            arr[boundary] = c;
+        if(compare(arr, n, pivot, j)){            
+            swap(arr, n, boundary, j);
             boundary++;
         }
+        log_pivotB(arr, n, pivot, boundary, start);
     }
-    int t = arr[pivot];
-    arr[pivot] = arr[boundary];
-    arr[boundary] = t;
-    quick_sort(arr, start, boundary - 1);
-    quick_sort(arr, boundary+1, end);
+    swap(arr, n, boundary, pivot);
+    quick_sort(arr, start, boundary - 1, n);
+    quick_sort(arr, boundary+1, end, n);
 }
 
 void heapify(int arr[], int n, int i){

@@ -43,6 +43,48 @@ void log_overwrite(int arr[], int n, int index, int value)
     printf("}\n");
 }
 
+void log_pivotB(int arr[], int n, int pivot, int boundary, int j)
+{
+    printf("{\"type\":\"pivot\",\"index\":%d,\"array\":", pivot);
+    print_array_json(arr, n);
+    printf("}\n");
 
+    // Array
+    printf("  ");
+    for (int i = 0; i < n; i++) {
+        printf("%4d", arr[i]);
+    }
+    printf("\n");
+
+    // Boundary
+    printf("B ");
+    for (int i = 0; i < n; i++) {
+        if (i == boundary)
+            printf("   ^");
+        else
+            printf("    ");
+    }
+    printf("\n");
+
+    // j
+    printf("j ");
+    for (int i = 0; i < n; i++) {
+        if (i == j)
+            printf("   ^");
+        else
+            printf("    ");
+    }
+    printf("\n");
+
+    // Pivot
+    printf("P ");
+    for (int i = 0; i < n; i++) {
+        if (i == pivot)
+            printf("   ^");
+        else
+            printf("    ");
+    }
+    printf("\n\n");
+}
 
 
