@@ -86,5 +86,47 @@ void log_pivotB(int arr[], int n, int pivot, int boundary, int j)
     }
     printf("\n\n");
 }
+void log_heapify(int arr[], int n, int root, int heapSize)
+{
+    int left = 2 * root + 1;
+    int right = 2 * root + 2;
 
+    if(left >= heapSize)
+        left = -1;
 
+    if(right >= heapSize)
+        right = -1;
+
+    printf(
+        "{\"type\":\"heapify\",\"root\":%d,\"left\":%d,\"right\":%d,\"heapSize\":%d,\"array\":",
+        root, left, right, heapSize
+    );
+
+    print_array_json(arr,n);
+    printf("}\n");
+
+    printf("      ");
+    for(int i = 0; i < n; i++)
+        printf("%4d", arr[i]);
+    printf("\n");
+
+    printf("Root  ");
+    for(int i = 0; i < n; i++)
+        printf(i == root ? "   ^" : "    ");
+    printf("\n");
+
+    printf("Left  ");
+    for(int i = 0; i < n; i++)
+        printf(i == left ? "   ^" : "    ");
+    printf("\n");
+
+    printf("Right ");
+    for(int i = 0; i < n; i++)
+        printf(i == right ? "   ^" : "    ");
+    printf("\n");
+
+    printf("Heap  ");
+    for(int i = 0; i < n; i++)
+        printf(i < heapSize ? " ---" : "    ");
+    printf("\n\n");
+}

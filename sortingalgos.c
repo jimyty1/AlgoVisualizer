@@ -122,31 +122,51 @@ void quick_sort(int arr[], int start, int end, int n){
 }
 
 void heapify(int arr[], int n, int i){
+    log_heapify(arr, n, i, n);
     int largest = i;
-    int l= (2*i) +1, r =(2*i) +2;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
 
-    if (l < n && arr[l] > arr[largest]){
-        largest = l;
+    if (l < n){
+        log_compare(arr, n, l, largest);
+        if (arr[l] > arr[largest]){
+            largest = l;
+        }
     }
-    if (r < n && arr[r] > arr[largest]){
-        largest = r;
+
+    if (r < n){
+        log_compare(arr, n, r, largest);
+        if (arr[r] > arr[largest]){
+            largest = r;
+        }
     }
+
     if (largest != i){
         int t = arr[i];
         arr[i] = arr[largest];
         arr[largest] = t;
+
+        log_swap(arr, n, i, largest);
+        
+
         heapify(arr, n, largest);
-    } 
+    }
 }
 
 void heap_sort(int arr[], int n){
+    // Build max heap
     for(int i = (n/2)-1; i >= 0; i--){
         heapify(arr, n, i);
     }
+
+    // Extract max repeatedly
     for(int j = n-1; j > 0; j--){
         int t = arr[j];
         arr[j] = arr[0];
         arr[0] = t;
+
+        log_swap(arr, n, 0, j);
+
         heapify(arr, j, 0);
     }
 }
