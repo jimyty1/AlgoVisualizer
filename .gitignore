@@ -4,3 +4,6 @@ main
 
 #macOS Debug Symbols
 *.dSYM
+
+#node_modules
+node_modules
