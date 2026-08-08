@@ -108,17 +108,16 @@ void quick_sort(int arr[], int start, int end, int n){
     int boundary = start;
     int pivot = end;
     log_pivotB(arr, n, pivot, boundary, start);
-    for (int j = start; j < end; j++)
-    {
+    for (int j = start; j < end; j++) {
         if(compare(arr, n, pivot, j)){            
             swap(arr, n, boundary, j);
             boundary++;
         }
-        log_pivotB(arr, n, pivot, boundary, start);
+        log_pivotB(arr, n, pivot, boundary, j);
     }
     swap(arr, n, boundary, pivot);
     quick_sort(arr, start, boundary - 1, n);
-    quick_sort(arr, boundary+1, end, n);
+    quick_sort(arr, boundary + 1, end, n);
 }
 
 void heapify(int arr[], int n, int i){

@@ -4,7 +4,7 @@
   "description": "API for sorting algorithm visulaizer",
   "license": "ISC",
   "author": "Juan-MD",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
