@@ -5,6 +5,42 @@ export type AlgorithmEvent =
       j: number;
       array: number[];
     }
+    | {
+      type: "compareValue";
+      i: number;
+      value: number;
+      array: number[];
+    }
+    | {
+      type: "partition";
+      start: number;
+      end: number;
+      pivot: number;
+      boundary: number;
+      j: number;
+      array: number[];
+    }
+    | {
+      type: "mergeStart";
+      start: number;
+      mid: number;
+      end: number;
+      array: number[];
+    }
+    | {
+      type: "mergeCompare";
+      left: number;
+      right: number;
+      start: number;
+      mid: number;
+      end: number;
+      array: number[];
+    }
+    | {
+      type: "pivotPlaced";
+      index: number;
+      array: number[];
+    }
   | {
       type: "swap";
       i: number;

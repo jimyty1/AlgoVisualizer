@@ -1,6 +1,5 @@
 #Compiled Executables
 tests
-main
 
 #macOS Debug Symbols
 *.dSYM
