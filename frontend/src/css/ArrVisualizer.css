@@ -45,6 +45,9 @@
 .pivot {
   background: #a31b1b;
 }
+.swapped {
+  background: #dd9415;
+}
 
 .eventDetails h4 {
   width: fit-content;
