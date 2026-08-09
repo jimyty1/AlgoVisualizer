@@ -84,7 +84,7 @@ void log_merge_compare(int arr[],int n,int left,int right,int start,int mid,int 
 
 void log_overwrite(int arr[], int n, int index, int value)
 {
-    printf("{\"type\":\"overwrite\",\"index\":%d,\"with value\":%d,\"array\":", index, value);
+    printf("{\"type\":\"overwrite\",\"index\":%d,\"with_value\":%d,\"array\":", index, value);
 
     print_array_json(arr, n);
 

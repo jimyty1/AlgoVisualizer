@@ -1,57 +1,131 @@
 .visualArray {
-  width: 100%;
-  max-width: 900px;
-  margin: 1rem auto;
+    width: 100%;
+    max-width: 900px;
+    margin: 1rem auto;
 }
 
 .eventDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .arrayValues {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
-  gap: 10px;
-  align-items: center;
-  justify-items: center;
-  width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
 }
-
 
 .arrayValue {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-width: 56px;
-  min-height: 56px;
-  padding: 0.5rem;
-  background: #37578a;
-  border: 1px solid #b8d4ff;
-  color: #e9e5e5;
-  font-weight: 700;
-  box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 56px;
+    min-height: 56px;
+
+    padding: 0.5rem;
+
+    background: #37578a;
+    border: 1px solid #b8d4ff;
+
+    color: #e9e5e5;
+    font-weight: 700;
+
+    box-sizing: border-box;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
 }
-.compared {
-  background: #dd9415;
+
+.partition_range {
+    background: #536b8f;
+    border-color: #8faed8;
 }
-.done {
-  background: #1a7f37;
+
+.j_index {
+    background: #dd9415;
+    border-color: #ffd27a;
+    transform: translateY(-4px);
 }
+
+.boundary {
+    background: #2764a8;
+    border-color: #6fa8dc;
+    transform: translateY(-4px);
+}
+
 .pivot {
-  background: #a31b1b;
+    background: #a31b1b;
+    border-color: #ff7777;
+    transform: translateY(-4px);
 }
+
+.compared {
+    background: #dd9415;
+}
+.compare_value {
+    background: #dd9415;
+}
+
+
 .swapped {
-  background: #dd9415;
+    background: #dd9415;
+    transform: scale(1.05);
+}
+
+.pivot_placed {
+    background: #1a7f37;
+    border-color: #65d98a;
+}
+
+.done {
+    background: #1a7f37;
+    border-color: #65d98a;
+}
+
+
+.merge_range {
+    background: #536b8f;
+}
+
+.merge_compared {
+    background: #dd9415;
+}
+
+.overwritten {
+    background: #7b4fa3;
+}
+
+.heapified {
+    background: #5b4b8a;
 }
 
 .eventDetails h4 {
-  width: fit-content;
-  margin: auto;
-  font-size: 0.85rem;
-  color: #e0e3e8;
+    width: fit-content;
+    max-width: 100%;
+    margin: auto;
+
+    font-size: 0.85rem;
+    color: #e0e3e8;
+
+    overflow-wrap: anywhere;
+}
+.dimmed {
+    background: #202020;
+    border-color: #333;
+    color: #555;
+    opacity: 0.45;
+    transform: scale(0.9);
+}
+.partition_range {
+    background: #37578a;
 }

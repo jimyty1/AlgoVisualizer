@@ -55,8 +55,7 @@ export type AlgorithmEvent =
   | {
       type: "overwrite";
       index: number;
-      "with value"?: number;
-      value?: number;
+      with_value: number;
       array: number[];
     }
   | {
@@ -103,7 +102,7 @@ export function isAlgorithmEvent(value: unknown): value is AlgorithmEvent {
         case "overwrite":
             return (
                 typeof event.index === "number" &&
-                typeof event.value === "number"
+                typeof event.with_value === "number"
             );
 
         case "heapify":
@@ -112,6 +111,11 @@ export function isAlgorithmEvent(value: unknown): value is AlgorithmEvent {
                 typeof event.left === "number" &&
                 typeof event.right === "number" &&
                 typeof event.heapSize === "number"
+            );
+        case "compare_value":
+            return (
+                typeof event.i === "number" &&
+                typeof event.value === "number"
             );
 
         case "merge_compare":

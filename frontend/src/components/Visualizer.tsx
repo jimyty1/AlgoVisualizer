@@ -40,7 +40,7 @@ function Visualizer() {
   }, [algo, arrayInput]);
 
   const maxStep = Math.max(events.length - 1, 0);
-  const currentEvent = events[currentStep] ?? null;
+
 
   return (
     <>
@@ -63,7 +63,10 @@ function Visualizer() {
       <span style={{ marginTop: "1rem", height: "1rem", display: "block" }}/>
 
       <p>Output:</p>
-      <ArrVisualizer currentEvent={currentEvent} />
+      <ArrVisualizer
+    events={events}
+    currentEventIndex={currentStep}
+/>
       <Controller step={currentStep} maxStep={maxStep} onStep={setCurrentStep} />
     </>
   );
