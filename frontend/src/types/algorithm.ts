@@ -35,3 +35,52 @@ export type AlgorithmEvent =
       type: "done";
       array: number[];
     };
+export function isAlgorithmEvent(value: unknown): value is AlgorithmEvent {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+  const event = value as Record<string, unknown>;
+  if (typeof event.type !== "string") {
+    return false;
+  }
+  if (
+    !Array.isArray(event.array) ||
+    !event.array.every((item) => typeof item === "number")
+  ) {
+    return false;
+  }
+  switch (event.type) {
+    case "compare":
+    case "swap":
+      return (
+        typeof event.i === "number" &&
+        typeof event.j === "number"
+      );
+
+    case "pivot":
+      return typeof event.index === "number";
+
+    case "overwrite":
+      return (
+        typeof event.index === "number" &&
+        (event.value === undefined ||
+          typeof event.value === "number") &&
+        (event["with value"] === undefined ||
+          typeof event["with value"] === "number")
+      );
+
+    case "heapify":
+      return (
+        typeof event.root === "number" &&
+        typeof event.left === "number" &&
+        typeof event.right === "number" &&
+        typeof event.heapSize === "number"
+      );
+
+    case "done":
+      return true;
+
+    default:
+      return false;
+  }
+}

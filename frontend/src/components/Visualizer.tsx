@@ -2,26 +2,8 @@ import { useEffect, useState } from "react";
 import Controller from "./Controller";
 import type { AlgorithmEvent } from "../types/algorithm";
 import "../App.css";
+import { parseEventStream } from "../utils/parseEventStream";
 
-function parseEventStream(rawOutput: string): AlgorithmEvent[] {
-  return rawOutput
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line.startsWith("{"))
-    .flatMap((line) => {
-      try {
-        const parsed = JSON.parse(line) as Partial<AlgorithmEvent>;
-
-        if (parsed && typeof parsed === "object" && "type" in parsed) {
-          return [parsed as AlgorithmEvent];
-        }
-
-        return [];
-      } catch {
-        return [];
-      }
-    });
-}
 
 function Visualizer() {
   const [events, setEvents] = useState<AlgorithmEvent[]>([]);
