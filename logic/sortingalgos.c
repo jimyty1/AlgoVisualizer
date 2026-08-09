@@ -134,20 +134,24 @@ void quick_sort(int arr[], int start, int end, int n)
     {
         return;
     }
+
     int boundary = start;
     int pivot = end;
-    log_partition(arr, n, start, end, pivot, boundary, start);
+
     for (int j = start; j < end; j++)
     {
-        log_partition(arr, n, start, end, pivot, boundary, start);
+        log_partition(arr, n, start, end, pivot, boundary, j);
+
         if (compare(arr, n, pivot, j))
         {
             swap(arr, n, boundary, j);
             boundary++;
         }
     }
+
     swap(arr, n, boundary, pivot);
     log_pivot_placed(arr, n, boundary);
+
     quick_sort(arr, start, boundary - 1, n);
     quick_sort(arr, boundary + 1, end, n);
 }
