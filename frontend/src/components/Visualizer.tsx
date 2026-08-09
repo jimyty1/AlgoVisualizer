@@ -3,6 +3,7 @@ import Controller from "./Controller";
 import type { AlgorithmEvent } from "../types/algorithm";
 import "../App.css";
 import { parseEventStream } from "../utils/parseEventStream";
+import ArrVisualizer from "./ArrVisualizer";
 
 
 function Visualizer() {
@@ -22,6 +23,7 @@ function Visualizer() {
     })
       .then((response) => response.text())
       .then((data) => {
+        console.log("Raw output from backend:", data);
         const nextEvents = parseEventStream(data);
         setEvents(nextEvents);
         setCurrentStep((previousStep) =>
@@ -44,15 +46,10 @@ function Visualizer() {
 
       <h2>Test</h2>
 
-      <Controller step={currentStep} maxStep={maxStep} onStep={setCurrentStep} />
-
       <p>Output:</p>
 
-      {currentEvent ? (
-        <pre>{JSON.stringify(currentEvent, null, 2)}</pre>
-      ) : (
-        <p>No events available.</p>
-      )}
+      <ArrVisualizer currentEvent={currentEvent} />
+      <Controller step={currentStep} maxStep={maxStep} onStep={setCurrentStep} />
     </>
   );
 }
